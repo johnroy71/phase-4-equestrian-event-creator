@@ -1,55 +1,67 @@
-// import logo from './logo.svg';
-// import './App.css';
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+import Nav from "./Components/Nav"
+import Login from "./Components/Login"
+import Signup from "./Components/Signup"
+import Riders from "./Components/Riders"
+import Horses from "./Components/Horses"
+import Events from "./Components/Events"
 
-// export default App;
+
 
 import { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
-
+  const [user, setUser] = useState(null);
+  const [rider, setRider] = useState(null);
+  const [event, setEvent] = useState(null);
+  const [horse, setHorse] = useState(null);
+  
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Switch>
-          <Route path="/testing">
-            <h1>Test Route</h1>
+
+    <div>
+    <Nav/>
+    <Switch>
+        <Route exact path="/">
+          <h1>Home</h1>         
+        </Route>
+        <Route exact path="/horses">
+          <h1>Horses</h1>
+          <Horses horse = {horse} setHorse={setHorse} />
+        </Route>
+        <Route exact path="/riders">
+          <h1>Riders</h1>
+          <Riders rider = {rider} setRider={setRider} />
           </Route>
-          <Route path="/">
-            <h1>Page Count: {count}</h1>
+          <Route exact path="/events">
+            <h1>Events</h1>
+            <Events event = {event} setEvent={setEvent} />
           </Route>
-        </Switch>
-      </div>
-    </BrowserRouter>
-  );
-}
+          <Route exact path="/login">
+            <h1>Log In</h1>
+            <Login user = {user} setUser = {setUser} />
+          </Route>
+          <Route exact path="/signup">
+            <h1>Sign Up</h1>
+            <Signup user = {user} setUser = {setUser} />
+          </Route>
+      </Switch>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)}
 
 export default App;
