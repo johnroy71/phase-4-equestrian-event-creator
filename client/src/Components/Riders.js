@@ -9,7 +9,7 @@ function Rider ({ rider, setRider }) {
 
 
     useEffect(() => {
-      fetch ('/riders_show')
+      fetch ('/riders')
       .then (resp => resp.json())
       .then (data => setRidersList(data))
     
@@ -21,7 +21,7 @@ function Rider ({ rider, setRider }) {
     const handleSubmit = (e) => {
         e.preventDefault()
     
-            fetch("/rider_create", {
+            fetch("/riders", {
             method: "POST",
             headers: {"Content-Type" : "application/json"},
             body: JSON.stringify({name, age, skill_level})

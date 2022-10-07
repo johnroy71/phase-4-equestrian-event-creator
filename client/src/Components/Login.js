@@ -19,8 +19,9 @@ function Login ({ user, setUser }) {
         fetch("/logout", {
         method: "DELETE",
         headers: {"Content-Type" : "application/json"},
-        body: JSON.stringify({username})
+        
         })
+        .then (setUser(null))
     }
 
 

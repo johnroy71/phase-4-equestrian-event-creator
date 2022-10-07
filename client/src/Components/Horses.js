@@ -9,7 +9,7 @@ function Horse ({ horse, setHorse }) {
 
 
     useEffect(() => {
-      fetch ('/horses_show')
+      fetch ('/horses')
       .then (resp => resp.json())
       .then (data => setHorsesList(data))
     
@@ -22,7 +22,7 @@ function Horse ({ horse, setHorse }) {
     const handleSubmit = (e) => {
         e.preventDefault()
     
-            fetch("/horse_create", {
+            fetch("/horses", {
             method: "POST",
             headers: {"Content-Type" : "application/json"},
             body: JSON.stringify({name, breed, training_level})

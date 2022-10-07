@@ -3,22 +3,22 @@ Rails.application.routes.draw do
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-  post "/rider_create", to: "riders#create"
-  delete "/rider_delete", to: "riders#destroy"
-  get "/riders_show", to: "riders#index"
-  get "/rider_show", to: "riders#show"
-  post "/horse_create", to: "horses#create"
-  get "/horses_show", to: "horses#index"
-  get "/horse_show", to: "horses#show"
-  post "event_create", to: "events#create"
-  get "/events_show", to: "events#index"
-  get "/event_show", to: "events#show"
-  # patch "/event_update", to "events#update"
-  # delete "/event_delete", to: "events#destroy"
+  # post "/rider_create", to: "riders#create"
+  # delete "/rider_delete", to: "riders#destroy"
+  # get "/riders_show", to: "riders#index"
+  # get "/rider_show", to: "riders#show"
+  # post "/horse_create", to: "horses#create"
+  # get "/horses_show", to: "horses#index"
+  # get "/horse_show", to: "horses#show"
+  # post "event_create", to: "events#create"
+  # # get "/events_show", to: "events#index"
+  # get "/event_show", to: "events#show"
+  # # patch "/event_update", to "events#update"
+  # # delete "/event_delete", to: "events#destroy"
   resources :events
-  resources :riders 
-  resources :horses 
-  resources :users
+  resources :riders, only: [:index, :create]
+  resources :horses, only: [:index, :create]
+  # resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

@@ -9,7 +9,7 @@ function Event ({ event, setEvent }) {
 
 
     useEffect(() => {
-      fetch ('/events_show')
+      fetch ('/events')
       .then (resp => resp.json())
       .then (data => setEventsList(data))
     
@@ -19,7 +19,7 @@ function Event ({ event, setEvent }) {
     const [name, setName] = useState("")
     const [horse_id, setHorseId] = useState("")
     const [rider_id, setRiderId] = useState("")
-    const [eventId, setEventId] = useState("")
+    const [id, setId] = useState("")
     const handleSubmit = (e) => {
         e.preventDefault()
     
@@ -36,15 +36,24 @@ function Event ({ event, setEvent }) {
     const handleUpdate = (e) => {
         e.preventDefault()
     
-            fetch("/event_create", {
-            method: "POST",
+            fetch(`/events/${id}`, {
+            method: "PATCH",
             headers: {"Content-Type" : "application/json"},
-            body: JSON.stringify({name, horse_id, rider_id})
+            body: JSON.stringify({id, name, horse_id, rider_id})
         })
             .then(resp => resp.json())
             .then(data => setEvent(data))
+            alert("Events Have Been Updated!")
+      window.location.reload()
               
     }
+    
+    // const handleDelete = (e) => {
+    //     e.preventDefault()
+    //     fetch(`/events/${id}`, {
+    //         method: "DELETE",
+    //     }
+    // )}
 
     return (
      <div> 
@@ -59,7 +68,7 @@ function Event ({ event, setEvent }) {
                     id="event_id"
                     autoComplete="off"
                     value={name}
-                    onChange = {(e) => setEventId(e.target.value)}
+                    onChange = {(e) => setId(e.target.value)}
                     />
                 <label htmlFor="age">Horse ID</label>
                 <input
@@ -90,8 +99,8 @@ function Event ({ event, setEvent }) {
                     type="integer"
                     id="name"
                     autoComplete="off"
-                    value={name}
-                    onChange = {(e) => setEventId(e.target.value)}
+                    value={id}
+                    onChange = {(e) => setId(e.target.value)}
                     />
                 <label htmlFor="Name">Name</label>
                 <input
@@ -123,6 +132,18 @@ function Event ({ event, setEvent }) {
 
         </form>
        <br></br>
+       
+       {/* <form onSubmit={handleDelete}>
+        <label htmlFor="id">Event ID</label>
+                <input
+                    type="integer"
+                    id="id"
+                    autoComplete="off"
+                    value={id}
+                    onChange = {(e) => setId(e.target.value)}
+                    />
+       </form> */}
+       
        <div>
             <EventContainer eventsList = {eventsList} />
         </div>
