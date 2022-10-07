@@ -28,7 +28,8 @@ function Rider ({ rider, setRider }) {
         })
             .then(resp => resp.json())
             .then(data => setRider(data))
-            
+            alert("Riders Have Been Updated!")
+            window.location.reload()
             
     }
 

@@ -29,6 +29,10 @@ function Horse ({ horse, setHorse }) {
         })
             .then(resp => resp.json())
             .then(data => setHorse(data))
+
+        
+            alert("Horses Have Been Updated!")
+      window.location.reload()
             
             
     }
@@ -64,7 +68,7 @@ function Horse ({ horse, setHorse }) {
                     value={training_level}
                     onChange = {(e) => setTrainingLevel(e.target.value)}
                 />
-                <button variant="fill" color="primary" type="submit">Create Rider
+                <button variant="fill" color="primary" type="submit">Create Horse
                 </button>
                 
         </form>

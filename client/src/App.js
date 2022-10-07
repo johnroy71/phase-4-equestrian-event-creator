@@ -24,7 +24,9 @@ function App() {
     <Nav/>
     <Switch>
         <Route exact path="/">
-          <h1>Home</h1>         
+          <h1>Home</h1>  
+          <h2>Shady Acres Stables and Adhesives</h2>  
+          <h3>Shady Acres is an OK equestrian stables and a top-flight manufacturer of artisinal hide-based glues.</h3>     
         </Route>
         <Route exact path="/horses">
           <h1>Horses</h1>
